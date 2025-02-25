@@ -2,13 +2,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Newspaper } from "lucide-react"
 import BookshelfContent from "../components/bookshelf"
 import PapershelfContent from "../components/papershelf"
+import ShinyText from "@/components/custom/shiny-text"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto py-12 px-8">
         <div className="max-w-[900px]">
-          <h1 className="text-4xl font-serif mb-4">Saidev&apos;s Library</h1>
+        <h1 className="text-muted-foreground mb-5">last updated: feb 25</h1>
+        <ShinyText text="Saidev&apos;s Library" disabled={false} speed={3} className='text-5xl font-serif mb-4' />
           <p className="text-muted-foreground mb-8">
             I read books and papers every month around various topics and here are some of them that I recommend. Note: I am not promoting any piracy through this platform.
           </p>
