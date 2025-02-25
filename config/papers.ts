@@ -14,27 +14,12 @@ export interface Paper {
 export const papers: Paper[] = [
   {
     id: 1,
-    title: "Detecting Near Duplicates for Web Crawling",
-    category: "Machine Learning",
-    downloadLink: "https://arxiv.org/pdf/1706.03762.pdf",
-    publishedIn: "NeurIPS",
-    year: 2017,
-  },
-  {
-    id: 2,
-    title: "Snapshot-Free, Transparent, and Robust Memory Reclamation for Lock-Free Data Structures",
-    category: "Computer Vision",
-    downloadLink: "https://arxiv.org/pdf/1512.03385.pdf",
-    publishedIn: "CVPR",
-    year: 2016,
-  },
-  {
-    id: 3,
-    title: "Language Models are Few-Shot Learners",
-    category: "Natural Language Processing",
-    downloadLink: "https://arxiv.org/pdf/2005.14165.pdf",
-    publishedIn: "NeurIPS",
-    year: 2020,
+    title: "Bitcoin: A Peer-to-Peer Electronic Cash System",
+    category: "Blockchain Technology ",
+    cover: "/images/papers/btc.png",
+    downloadLink: "https://drive.google.com/file/d/1CLFOPITYqg0_jadee1Kep4_bYQ1BBqe9/view?usp=sharing",
+    publishedIn: "Satoshi Nakamoto",
+    year: 2009,
   },
 ]
 

@@ -11,21 +11,25 @@ export interface Book {
     {
       id: 1,
       category: "Personal Productivity and Growth",
-      buyLink: "https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296",
+      cover: '/images/books/ath.png',
+      buyLink: "https://amzn.in/d/awi2qQr",
     },
     {
       id: 2,
-      category: "Self Help",
-      downloadLink: "https://www.amazon.com/Amp-It-Up-Leading-Hypergrowth/dp/1119836115",
+      category: "Personal Productivity and Growth",
+      cover: '/images/books/48laws.png',
+      buyLink: "https://amzn.in/d/ivVZgSW",
     },
     {
       id: 3,
-      category: "Personal Productivity and Growth",
-      buyLink: "https://www.amazon.com/Think-Again-Power-Knowing-What/dp/1984878106",
+      category: "Backend System Design",
+      cover: '/images/books/dda.png',
+      downloadLink: "https://drive.google.com/file/d/1zbqhUvFrUcnMNO34W6s8lc1zx0G-NXcT/view?usp=sharing",
     },
     {
       id: 4,
-      category: "Personal Productivity and Growth",
-      buyLink: "https://www.amazon.com/Courage-Be-Disliked-Phenomenon-Happiness/dp/1501197274",
+      category: "Spirituality and Consciousness",
+      cover: '/images/books/sexm.png',
+       downloadLink: "https://drive.google.com/file/d/1vqYsHaMM2fKCZNJtRLupiDI9Jq41TXd8/view?usp=sharing",
     },
   ]
