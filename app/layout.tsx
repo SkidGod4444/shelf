@@ -3,7 +3,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const font = Bricolage_Grotesque();
+const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
