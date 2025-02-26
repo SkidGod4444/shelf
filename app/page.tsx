@@ -1,10 +1,16 @@
+"use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, Newspaper } from "lucide-react"
-import BookshelfContent from "../components/bookshelf"
-import PapershelfContent from "../components/papershelf"
+import { BookOpen, Newspaper, Video } from "lucide-react"
+import BookshelfContent from "../components/custom/shelfs/bookshelf"
+import PapershelfContent from "../components/custom/shelfs/papershelf"
 import ShinyText from "@/components/custom/shiny-text"
+import { useSearchParams } from 'next/navigation';
+import VideoshelfContent from "@/components/custom/shelfs/videshelf";
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto py-12 px-8">
@@ -16,8 +22,8 @@ export default function Home() {
           </p>
         </div>
 
-        <Tabs defaultValue="bookshelf" className="my-8">
-          <TabsList className="grid w-full max-w-[400px] grid-cols-2">
+        <Tabs defaultValue={tab === 'books' ? 'bookshelf' : tab === 'papers' ? 'papershelf' : tab === 'videos' ? 'videoshelf' : 'bookshelf'} className="my-8">
+          <TabsList className="grid w-full max-w-[600px] grid-cols-3">
             <TabsTrigger value="bookshelf" className="flex items-center gap-2">
               <BookOpen className="h-4 w-4" />
               Bookshelf
@@ -26,6 +32,10 @@ export default function Home() {
               <Newspaper className="h-4 w-4" />
               Papershelf
             </TabsTrigger>
+            <TabsTrigger value="videoshelf" className="flex items-center gap-2">
+              <Video className="h-4 w-4" />
+              Videoshelf
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="bookshelf">
             <BookshelfContent />
@@ -33,9 +43,11 @@ export default function Home() {
           <TabsContent value="papershelf">
             <PapershelfContent />
           </TabsContent>
+          <TabsContent value="videoshelf">
+            <VideoshelfContent />
+          </TabsContent>
         </Tabs>
       </main>
     </div>
   )
 }
-
