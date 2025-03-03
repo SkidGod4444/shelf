@@ -8,7 +8,13 @@ export interface Video {
   }
 
 export const videos: Video[] = [
-    {
+  {
+    id: 3,
+    type: "yt",
+    url: "https://youtu.be/jjW8w8ED3Ns?si=R6OSihf6a0GOBDXa",
+    category: "Tech Internals Playlists",
+  },
+  {
       id: 1,
       type: "yt",
       url: "https://youtu.be/bI6q16ffdgQ?si=4M_UlqOjR4GuRwEk",
