@@ -9,6 +9,12 @@ export interface Video {
 
 export const videos: Video[] = [
   {
+    id: 8,
+    type: "yt",
+    url: "https://youtu.be/ztHopE5Wnpc?si=SJkJDkAFx5lhZNty",
+    category: "Tech Courses",
+  },
+  {
     id: 3,
     type: "yt",
     url: "https://youtu.be/jjW8w8ED3Ns?si=R6OSihf6a0GOBDXa",
