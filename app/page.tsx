@@ -2,12 +2,13 @@
 
 import { Suspense } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Newspaper, Video } from "lucide-react";
+import { BookOpen, Newspaper, NotebookPen, Video } from "lucide-react";
 import BookshelfContent from "../components/custom/shelfs/bookshelf";
 import PapershelfContent from "../components/custom/shelfs/papershelf";
 import ShinyText from "@/components/custom/shiny-text";
 import { useSearchParams } from "next/navigation";
 import VideoshelfContent from "@/components/custom/shelfs/videshelf";
+import BlogshelfContent from "@/components/custom/shelfs/blogshelf";
 
 function TabSelector() {
   const searchParams = useSearchParams();
@@ -22,11 +23,17 @@ function TabSelector() {
           ? "papershelf"
           : tab === "videos"
           ? "videoshelf"
-          : "bookshelf"
+          : tab === "blogs"
+          ? "blogshelf"
+          : "blogshelf"
       }
       className="my-8"
     >
-      <TabsList className="grid w-full max-w-[600px] grid-cols-3">
+      <TabsList className="grid w-full max-w-[800px] grid-cols-4">
+      <TabsTrigger value="blogshelf" className="flex items-center gap-2">
+          <NotebookPen className="h-4 w-4" />
+          Blogshelf
+        </TabsTrigger>
         <TabsTrigger value="bookshelf" className="flex items-center gap-2">
           <BookOpen className="h-4 w-4" />
           Bookshelf
@@ -40,6 +47,9 @@ function TabSelector() {
           Videoshelf
         </TabsTrigger>
       </TabsList>
+      <TabsContent value="blogshelf">
+        <BlogshelfContent />
+      </TabsContent>
       <TabsContent value="bookshelf">
         <BookshelfContent />
       </TabsContent>
