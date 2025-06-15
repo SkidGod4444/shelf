@@ -68,7 +68,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <main className="container mx-auto py-12 px-8">
         <div className="max-w-[900px]">
-          <h1 className="text-muted-foreground mb-5">last updated: Mar 10th</h1>
+          <h1 className="text-muted-foreground mb-5">last updated: Jun 15th</h1>
           <ShinyText
             text="Saidev&apos;s Library"
             disabled={false}
