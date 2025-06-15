@@ -9,6 +9,7 @@ import ShinyText from "@/components/custom/shiny-text";
 import { useSearchParams } from "next/navigation";
 import VideoshelfContent from "@/components/custom/shelfs/videshelf";
 import BlogshelfContent from "@/components/custom/shelfs/blogshelf";
+import { formatDistanceToNow } from "date-fns";
 
 function TabSelector() {
   const searchParams = useSearchParams();
@@ -30,7 +31,7 @@ function TabSelector() {
       className="my-8"
     >
       <TabsList className="grid w-full max-w-[800px] grid-cols-4">
-      <TabsTrigger value="blogshelf" className="flex items-center gap-2">
+        <TabsTrigger value="blogshelf" className="flex items-center gap-2">
           <NotebookPen className="h-4 w-4" />
           Blogshelf
         </TabsTrigger>
@@ -68,7 +69,9 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <main className="container mx-auto py-12 px-8">
         <div className="max-w-[900px]">
-          <h1 className="text-muted-foreground mb-5">last updated: Jun 15th</h1>
+          <h1 className="text-muted-foreground mb-5">
+            last updated: {formatDistanceToNow(new Date('2025-06-15'), { addSuffix: true })}
+          </h1>
           <ShinyText
             text="Saidev&apos;s Library"
             disabled={false}
