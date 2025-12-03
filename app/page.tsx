@@ -70,7 +70,7 @@ export default function Home() {
       <main className="container mx-auto py-12 px-8">
         <div className="max-w-[900px]">
           <h1 className="text-muted-foreground mb-5">
-            last updated: {formatDistanceToNow(new Date('2025-06-15'), { addSuffix: true })}
+            last updated: {formatDistanceToNow(new Date('2025-12-03'), { addSuffix: true })}
           </h1>
           <ShinyText
             text="Saidev&apos;s Library"

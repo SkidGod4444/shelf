@@ -10,15 +10,35 @@ export interface Book {
   export const books: Book[] = [
     {
       id: 30,
-      category: "You Don't Know JS (Full Series)",
+      category: "Computer Languages",
       cover: '/images/books/js.png',
       downloadLink: "https://drive.google.com/file/d/1RhLeFbhPJ8JlQx6eVvJeL-HkmHtTCEwN/view?usp=sharing",
     },
     {
+      id: 10,
+      category: "Computer Languages",
+      cover: '/images/books/letusc.png',
+      downloadLink: "https://drive.google.com/file/d/1ntlt_dEopGGYSiQ9KzuzSJVOg7Vb7geR/view?usp=sharing",
+    },
+    {
       id: 3,
-      category: "Backend System Design",
+      category: "Data Science & Algorithms",
       cover: '/images/books/dda.png',
       downloadLink: "https://drive.google.com/file/d/1zbqhUvFrUcnMNO34W6s8lc1zx0G-NXcT/view?usp=sharing",
+    },
+
+    {
+      id: 4,
+      category: "AI Agents",
+      cover: '/images/books/pbai.png',
+      downloadLink: "https://drive.google.com/file/d/1g0gk0jb9kPQZf23XO3LkVCHGzIC-lZcJ/view?usp=sharing",
+    },
+
+    {
+      id: 110,
+      category: "Data Science & Algorithms",
+      cover: '/images/books/algoi.png',
+      downloadLink: "https://drive.google.com/file/d/1ouyRO87P_QSZyBymrq5HarzrQiEi_Eg3/view?usp=sharing",
     },
 
     // Personal Productivity and Growth
@@ -34,6 +54,12 @@ export interface Book {
       category: "Personal Productivity and Growth",
       cover: '/images/books/48laws.png',
       buyLink: "https://amzn.in/d/ivVZgSW",
+    },
+    {
+      id: 21,
+      category: "Personal Productivity and Growth",
+      cover: '/images/books/lim.png',
+      downloadLink: "https://drive.google.com/file/d/1rA3kRjxXFTsJisIdXqvQ9ahvK3ORTqAZ/view?usp=sharing",
     },
 
     // Enterpreneurship,Startup and Business
