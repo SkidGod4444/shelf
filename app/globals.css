@@ -5,38 +5,38 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
-  One theme: a painted reading-room wall with oak shelves.
+  One theme: a black wall with oak shelves.
   The layout forces the `dark` class, so there is no second palette.
 */
 :root {
-  --background: #2b4a4f; /* wall */
+  --background: #000000; /* wall */
   --foreground: #f1eee6; /* paper white */
 
-  --card: #325459;
+  --card: #101010;
   --card-foreground: #f1eee6;
-  --popover: #325459;
+  --popover: #101010;
   --popover-foreground: #f1eee6;
 
   --primary: #e0b341; /* brass */
   --primary-foreground: #1c2b2b;
 
-  --secondary: #3a5e63;
+  --secondary: #1f1f1f;
   --secondary-foreground: #f1eee6;
-  --muted: #36585d;
-  --muted-foreground: #b4c6c3;
-  --accent: #3a5e63;
+  --muted: #1a1a1a;
+  --muted-foreground: #a8a8a8;
+  --accent: #1f1f1f;
   --accent-foreground: #f1eee6;
 
   --destructive: #d4634b;
   --destructive-foreground: #f1eee6;
 
-  --border: #4a6c70;
-  --input: #4a6c70;
+  --border: #2e2e2e;
+  --input: #2e2e2e;
   --ring: #e0b341;
 
   --oak: #c9a36b; /* shelf top face */
   --oak-edge: #9a7646; /* shelf front edge */
-  --wall-shade: #223c40; /* shadow a shelf casts on the wall */
+  --wall-shade: #1c1c1c; /* edge under paper and video thumbnails */
 
   --radius: 0.25rem;
 }
@@ -83,6 +83,13 @@
   ::selection {
     background: var(--primary);
     color: var(--primary-foreground);
+  }
+  a[href],
+  button:not(:disabled),
+  [role='tab'],
+  [role='button'],
+  summary {
+    cursor: pointer;
   }
   a:focus-visible,
   button:focus-visible {
@@ -143,7 +150,7 @@
       var(--oak) 0.3125rem,
       var(--oak-edge) 0.3125rem,
       var(--oak-edge) var(--plank),
-      var(--wall-shade) var(--plank),
+      var(--background) var(--plank),
       var(--background) 100%
     );
     pointer-events: none;
@@ -167,8 +174,8 @@
   }
 
   .book img {
-    filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.5))
-      drop-shadow(3px 0 5px rgb(0 0 0 / 0.3));
+    /* A faint light edge so dark covers stay visible on the black wall. */
+    filter: drop-shadow(0 0 1px rgb(255 255 255 / 0.35));
   }
 
   .shelf-item:hover .book,
