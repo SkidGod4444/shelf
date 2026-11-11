@@ -57,8 +57,8 @@ function VideoCard({ video }: { video: (typeof videos)[0] }) {
       : video.url
   const thumbnail =
     video.type === "yt"
-      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-      : video.thumbnail || "/images/videos-placeholder.png"
+      ? `https://img.youtube.com/vi/${videoId}/sddefault.jpg`
+      : video.thumbnail || "/images/videos-placeholder.webp"
 
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="group block">

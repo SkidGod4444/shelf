@@ -33,7 +33,7 @@ export default function BookshelfContent() {
               const cover = (
                 <span className="book relative h-44 w-[8.25rem] sm:h-52 sm:w-[9.75rem]">
                   <Image
-                    src={book.cover || "/images/book-placeholder.png"}
+                    src={book.cover || "/images/book-placeholder.webp"}
                     alt={`Cover of a book in ${category}`}
                     fill
                     sizes="(min-width: 640px) 156px, 132px"

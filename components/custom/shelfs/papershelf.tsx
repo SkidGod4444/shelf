@@ -39,7 +39,7 @@ export default function PapershelfContent() {
                 >
                   <span className="relative h-28 w-[5.25rem] shrink-0 overflow-hidden rounded-[2px] bg-foreground shadow-[2px_3px_0_var(--wall-shade)]">
                     <Image
-                      src={paper.cover || "/images/paper-placeholder.png"}
+                      src={paper.cover || "/images/paper-placeholder.webp"}
                       alt=""
                       fill
                       sizes="84px"
