@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Besley, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const font = Bricolage_Grotesque({ subsets: ["latin"] });
+const sans = Schibsted_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-schibsted",
+});
+
+const serif = Besley({
+  subsets: ["latin"],
+  variable: "--font-besley",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://shelf.devwtf.in/'),
@@ -74,10 +82,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${font.className} antialiased`}
-      >
+    <html lang="en" className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased">
          <ThemeProvider
             attribute="class"
             defaultTheme="dark"

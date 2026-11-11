@@ -1,25 +1,10 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { videos } from "@/config/videos"
 import { getYouTubeVideoTitle } from "@/lib/yt"
 import { Skeleton } from "@/components/ui/skeleton"
-
-// Group videos by category
-const videosByCategory = videos.reduce(
-  (acc, video) => {
-    if (!acc[video.category]) {
-      acc[video.category] = []
-    }
-    acc[video.category].push(video)
-    return acc
-  },
-  {} as Record<string, typeof videos>,
-)
 
 function getVideoId(url: string): string | null {
   // YouTube URL patterns
@@ -38,7 +23,6 @@ function getVideoId(url: string): string | null {
 }
 
 function VideoCard({ video }: { video: (typeof videos)[0] }) {
-  const [isHovered, setIsHovered] = useState(false)
   const [title, setTitle] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const videoId = getVideoId(video.url)
@@ -62,73 +46,61 @@ function VideoCard({ video }: { video: (typeof videos)[0] }) {
     fetchTitle()
   }, [video, videoId])
 
-  const handleClick = () => {
-    if (video.type === "yt") {
-      window.open(video.url, "_blank")
-    } else if (video.type === "drive" && videoId) {
-      window.open(`https://drive.google.com/file/d/${videoId}/preview`, "_blank")
-    }
-  }
+  // Without a YouTube API key the title lookup falls back to a placeholder;
+  // lead with the category instead of showing it.
+  const hasTitle = Boolean(title) && title !== "Untitled Video"
+
+  const href =
+    video.type === "drive" && videoId
+      ? `https://drive.google.com/file/d/${videoId}/preview`
+      : video.url
+  const thumbnail =
+    video.type === "yt"
+      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+      : video.thumbnail || "/images/videos-placeholder.png"
 
   return (
-    <Card
-      className="group relative overflow-hidden cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
-    >
-      <CardContent className="p-0">
-        <div className="aspect-video relative">
-          {video.type === "yt" ? (
-            <Image
-              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-              alt={title || "Video thumbnail"}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <Image
-              src={video.thumbnail || "/images/videos-placeholder.png"}
-              alt={title || "Video thumbnail"}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          )}
-          <div
-            className={`absolute inset-0 bg-black/60 flex items-center justify-center transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Button variant="secondary" size="lg" className="gap-2">
-              <ExternalLink className="h-5 w-5" />
-              Watch
-            </Button>
-          </div>
-        </div>
-        <div className="p-2 h-auto">
-          {isLoading ? <Skeleton className="h-2 w-full" /> : <h3 className="font-medium line-clamp-4">{title}</h3>}
-        </div>
-      </CardContent>
-    </Card>
+    <a href={href} target="_blank" rel="noopener noreferrer" className="group block">
+      <span className="relative block aspect-video overflow-hidden rounded-sm bg-muted shadow-[3px_4px_0_var(--wall-shade)]">
+        <Image
+          src={thumbnail}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      </span>
+      <span className="mt-4 block">
+        {isLoading ? (
+          <Skeleton className="h-5 w-3/4" />
+        ) : hasTitle ? (
+          <>
+            <span className="block text-lg font-medium leading-snug group-hover:underline">
+              {title}
+            </span>
+            <span className="mt-1 block text-muted-foreground">{video.category}</span>
+          </>
+        ) : (
+          <span className="block text-lg font-medium leading-snug group-hover:underline">
+            {video.category}
+          </span>
+        )}
+        <span className="mt-2 block text-sm text-primary">
+          {video.type === "yt" ? "Watch on YouTube" : "Watch on Google Drive"}
+        </span>
+      </span>
+    </a>
   )
 }
 
 export default function VideoshelfContent() {
   return (
-    <div className="grid gap-12">
-      {Object.entries(videosByCategory).map(([category, videos]) => (
-        <section key={category}>
-          <h2 className="text-3xl font-serif my-8">{category}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {videos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        </section>
+    <ul className="grid gap-x-8 gap-y-12 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => (
+        <li key={video.id}>
+          <VideoCard video={video} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
-

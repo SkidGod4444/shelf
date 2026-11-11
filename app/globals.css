@@ -1,121 +1,188 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@plugin 'tailwindcss-animate';
 
+@custom-variant dark (&:is(.dark *));
 
-@layer base {
-  :root {
+/*
+  One theme: a painted reading-room wall with oak shelves.
+  The layout forces the `dark` class, so there is no second palette.
+*/
+:root {
+  --background: #2b4a4f; /* wall */
+  --foreground: #f1eee6; /* paper white */
 
-    --background: 0 0% 100%;
+  --card: #325459;
+  --card-foreground: #f1eee6;
+  --popover: #325459;
+  --popover-foreground: #f1eee6;
 
-    --foreground: 240 10% 3.9%;
+  --primary: #e0b341; /* brass */
+  --primary-foreground: #1c2b2b;
 
-    --card: 0 0% 100%;
+  --secondary: #3a5e63;
+  --secondary-foreground: #f1eee6;
+  --muted: #36585d;
+  --muted-foreground: #b4c6c3;
+  --accent: #3a5e63;
+  --accent-foreground: #f1eee6;
 
-    --card-foreground: 240 10% 3.9%;
+  --destructive: #d4634b;
+  --destructive-foreground: #f1eee6;
 
-    --popover: 0 0% 100%;
+  --border: #4a6c70;
+  --input: #4a6c70;
+  --ring: #e0b341;
 
-    --popover-foreground: 240 10% 3.9%;
+  --oak: #c9a36b; /* shelf top face */
+  --oak-edge: #9a7646; /* shelf front edge */
+  --wall-shade: #223c40; /* shadow a shelf casts on the wall */
 
-    --primary: 240 5.9% 10%;
-
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 240 4.8% 95.9%;
-
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5.9% 90%;
-
-    --input: 240 5.9% 90%;
-
-    --ring: 240 10% 3.9%;
-
-    --chart-1: 12 76% 61%;
-
-    --chart-2: 173 58% 39%;
-
-    --chart-3: 197 37% 24%;
-
-    --chart-4: 43 74% 66%;
-
-    --chart-5: 27 87% 67%;
-
-    --radius: 0.5rem
-  }
-  .dark {
-
-    --background: 240 10% 3.9%;
-
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-
-    --input: 240 3.7% 15.9%;
-
-    --ring: 240 4.9% 83.9%;
-
-    --chart-1: 220 70% 50%;
-
-    --chart-2: 160 60% 45%;
-
-    --chart-3: 30 80% 55%;
-
-    --chart-4: 280 65% 60%;
-
-    --chart-5: 340 75% 55%
-  }
+  --radius: 0.25rem;
 }
 
+@theme inline {
+  --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-besley), ui-serif, Georgia, serif;
 
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-oak: var(--oak);
+  --color-oak-edge: var(--oak-edge);
+  --color-wall-shade: var(--wall-shade);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-sm: calc(var(--radius) - 2px);
+}
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /*
+    A shelf. Every book draws the plank under itself and far off to the
+    right; the shelf clips the overhang. Wrapped rows each get a full plank,
+    and all colours are opaque so overlapping planks do not darken.
+  */
+  .shelf {
+    --plank: 0.875rem;
+    --plank-shadow: 0.75rem;
+    --caption: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    column-gap: 3.5rem;
+    row-gap: 2.25rem;
+    padding-inline: 1rem;
+    overflow-x: clip;
+  }
+
+  /* One category: its name, then its books. Categories share a plank. */
+  .shelf-group {
+    max-width: 100%;
+  }
+
+  .shelf-books {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    column-gap: 1.25rem;
+    row-gap: 1.25rem;
+  }
+
+  .shelf-item {
+    position: relative;
+    display: block;
+    padding-bottom: calc(var(--plank) + var(--caption));
+  }
+
+  .shelf-item::after {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    bottom: calc(var(--caption) - var(--plank-shadow));
+    width: 300vw;
+    height: calc(var(--plank) + var(--plank-shadow));
+    background: linear-gradient(
+      to bottom,
+      var(--oak) 0,
+      var(--oak) 0.3125rem,
+      var(--oak-edge) 0.3125rem,
+      var(--oak-edge) var(--plank),
+      var(--wall-shade) var(--plank),
+      var(--background) 100%
+    );
+    pointer-events: none;
+  }
+
+  .shelf-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    height: var(--caption);
+    display: flex;
+    align-items: flex-end;
+    white-space: nowrap;
+  }
+
+  .book {
+    display: block;
+    transform-origin: bottom center;
+    transition: transform 160ms ease-out;
+  }
+
+  .book img {
+    filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.5))
+      drop-shadow(3px 0 5px rgb(0 0 0 / 0.3));
+  }
+
+  .shelf-item:hover .book,
+  .shelf-item:focus-visible .book {
+    transform: translateY(-0.5rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .book {
+      transition: none;
+    }
+    .shelf-item:hover .book,
+    .shelf-item:focus-visible .book {
+      transform: none;
+    }
   }
 }

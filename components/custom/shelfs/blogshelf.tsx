@@ -1,36 +1,37 @@
-import { Card } from '@/components/ui/card'
-import { blogs } from '@/config/blogs'
-import Link from 'next/link'
-import React from 'react'
+import { blogs } from "@/config/blogs"
 
 const blogsByCategory = blogs.reduce(
-    (acc, blog) => {
-      if (!acc[blog.category]) {
-        acc[blog.category] = []
-      }
-      acc[blog.category].push(blog)
-      return acc
-    },
-    {} as Record<string, typeof blogs>,
-  )
+  (acc, blog) => {
+    if (!acc[blog.category]) {
+      acc[blog.category] = []
+    }
+    acc[blog.category].push(blog)
+    return acc
+  },
+  {} as Record<string, typeof blogs>,
+)
 
 export default function BlogshelfContent() {
   return (
-    <div className="grid gap-12">
+    <div>
       {Object.entries(blogsByCategory).map(([category, blogs]) => (
-        <section key={category}>
-          <h2 className="text-3xl font-serif my-8">{category}</h2>
-          <div className="flex flex-col items-start justify-center gap-6">
+        <section key={category} className="pt-12">
+          <h2 className="mb-5 font-serif text-xl font-medium sm:text-2xl">{category}</h2>
+          <ul className="grid gap-10">
             {blogs.map((blog) => (
-              <Link key={blog.slug} href={blog.slug} target="_blank" rel="noopener noreferrer" className='border-border border-dashed border-b-2'>
-                <Card className='flex flex-col h-full w-auto p-2 gap-2 cursor-pointer border-none'>
-                <h1 className='text-2xl font-semibold hover:underline'>{blog.title}</h1>
-                <span className='text-muted-foreground'>{blog.description}</span>
-                <span>By <span className='text-muted-foreground'>{blog.author} • {blog.date}</span></span>
-              </Card>
-              </Link>
+              <li key={blog.slug} className="max-w-[68ch]">
+                <a href={blog.slug} target="_blank" rel="noopener noreferrer" className="group block">
+                  <h3 className="font-serif text-2xl font-medium leading-tight group-hover:underline sm:text-3xl">
+                    {blog.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{blog.description}</p>
+                  <p className="mt-3 text-sm">
+                    {[blog.author && `By ${blog.author}`, blog.date].filter(Boolean).join(", ")}
+                  </p>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       ))}
     </div>
