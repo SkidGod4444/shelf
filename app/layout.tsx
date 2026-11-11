@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/preview.png",
-        width: 964,
-        height: 440,
+        width: 1200,
+        height: 630,
         alt: siteTitle,
       },
     ],
@@ -79,8 +79,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/preview.png",
-        width: 964,
-        height: 440,
+        width: 1200,
+        height: 630,
         alt: siteTitle,
       },
     ],
