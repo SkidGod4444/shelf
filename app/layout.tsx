@@ -13,10 +13,18 @@ const serif = Besley({
   variable: "--font-besley",
 });
 
+const siteUrl = "https://lib.saidev.codes";
+const siteTitle = "Saidev Dhal's Shelf";
+const siteDescription =
+  "Saidev's library of books, papers, videos and blogs that he reads and recommends.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shelf.devwtf.in/'),
-  title: "Saidev Dhal's Shelf",
-  description: "Saidev's library of books and papers.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteTitle}`,
+  },
+  description: siteDescription,
   keywords: [
     "Saidev Dhal's Shelf",
     "SkidGod",
@@ -30,20 +38,26 @@ export const metadata: Metadata = {
   authors: [
     {
       name: `Saidev Dhal`,
-      url: 'https://shelf.devwtf.in/',
+      url: siteUrl,
     },
   ],
   creator: `Saidev Dhal`,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: `Saidev Dhal`,
-    description: "Saidev's library of books and papers.",
-    url: 'https://shelf.devwtf.in/',
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
     images: [
       {
-        url: '/preview.png',
+        url: "/preview.png",
+        width: 964,
+        height: 440,
+        alt: siteTitle,
       },
     ],
-    siteName: `Saidev Dhal`,
+    siteName: siteTitle,
     locale: "en_US",
     type: "website",
   },
@@ -59,17 +73,15 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: `Saidev Dhal`,
+    title: siteTitle,
     card: "summary_large_image",
-    site: 'https://shelf.devwtf.in/',
-    creator: `Saidev Dhal`,
-    description: "Saidev's library of books and papers.",
+    description: siteDescription,
     images: [
       {
-        url: '/preview.png',
-        width: 1200,
-        height: 630,
-        alt: `Saidev Dhal`,
+        url: "/preview.png",
+        width: 964,
+        height: 440,
+        alt: siteTitle,
       },
     ],
   },
