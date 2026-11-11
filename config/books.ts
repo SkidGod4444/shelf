@@ -91,4 +91,37 @@ export interface Book {
       cover: '/images/books/mti.png',
        downloadLink: "https://drive.google.com/file/d/1vm59hwMy78V3sT-viJW9EX_dAWJJbR40/view?usp=sharing",
     },
+
+    // Added November 2026. The first three are free to read online from their authors.
+
+    {
+      id: 200,
+      category: "Low-level Systems",
+      cover: '/images/books/ostep.png',
+      downloadLink: "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+    },
+    {
+      id: 201,
+      category: "Computer Languages",
+      cover: '/images/books/crafting-interpreters.png',
+      downloadLink: "https://craftinginterpreters.com/",
+    },
+    {
+      id: 202,
+      category: "Computer Languages",
+      cover: '/images/books/sicp.png',
+      downloadLink: "https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html",
+    },
+    {
+      id: 203,
+      category: "Data Science & Algorithms",
+      cover: '/images/books/database-internals.png',
+      buyLink: "https://www.databass.dev/",
+    },
+    {
+      id: 204,
+      category: "Software Engineering",
+      cover: '/images/books/pragmatic-programmer.png',
+      buyLink: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
+    },
   ]

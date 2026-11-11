@@ -11,12 +11,19 @@ export interface Blog {
 
   export const blogs: Blog[] = [
     {
-     slug: "https://b.devwtf.in/byodb",
-    category: "Low-level Systems",
-    //   cover: '/images/books/dda.png',
-    title: "Build your own Custom Database using TypeScript",
-    description: "This project will help you grasp low-level systems without requiring any prior knowledge of database engineering.  This post outlines my journey of creating LumeDB, an industry-ready, file-based, and performant database.",
-    date: "19-Mar-2025",
-    author: "Saidev Dhal"
+      slug: "https://notes.eatonphil.com/database-basics.html",
+      category: "Low-level Systems",
+      title: "Writing a SQL database from scratch in Go: 1. SELECT, INSERT, CREATE and a REPL",
+      description: "The first part of a series on writing a SQL database from scratch in Go.",
+      date: "06-Mar-2020",
+      author: "Phil Eaton"
+    },
+    {
+      slug: "https://overreacted.io/a-complete-guide-to-useeffect/",
+      category: "React Internals",
+      title: "A Complete Guide to useEffect",
+      description: "Effects are a part of your data flow.",
+      date: "09-Mar-2019",
+      author: "Dan Abramov"
     },
   ];

@@ -70,7 +70,7 @@ export default function Home() {
             I recommend. Note: I am not promoting piracy through this platform.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
-            last updated: {formatDistanceToNow(new Date("2025-12-03"), { addSuffix: true })}
+            last updated: {formatDistanceToNow(new Date("2026-11-11"), { addSuffix: true })}
           </p>
         </header>
 

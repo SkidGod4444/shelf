@@ -46,9 +46,10 @@ function VideoCard({ video }: { video: (typeof videos)[0] }) {
     fetchTitle()
   }, [video, videoId])
 
-  // Without a YouTube API key the title lookup falls back to a placeholder;
-  // lead with the category instead of showing it.
-  const hasTitle = Boolean(title) && title !== "Untitled Video"
+  // Without a YouTube API key the title lookup falls back to a placeholder.
+  // Use the title from the config instead, or lead with the category.
+  const shownTitle = title && title !== "Untitled Video" ? title : video.title
+  const hasTitle = Boolean(shownTitle)
 
   const href =
     video.type === "drive" && videoId
@@ -76,7 +77,7 @@ function VideoCard({ video }: { video: (typeof videos)[0] }) {
         ) : hasTitle ? (
           <>
             <span className="block text-lg font-medium leading-snug group-hover:underline">
-              {title}
+              {shownTitle}
             </span>
             <span className="mt-1 block text-muted-foreground">{video.category}</span>
           </>

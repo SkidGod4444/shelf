@@ -12,6 +12,14 @@ const booksByCategory = books.reduce(
   {} as Record<string, typeof books>,
 )
 
+function readLabel(link: string) {
+  try {
+    return new URL(link).hostname === "drive.google.com" ? "Read on Google Drive" : "Read online"
+  } catch {
+    return "Read online"
+  }
+}
+
 export default function BookshelfContent() {
   return (
     <div className="shelf pt-12">
@@ -21,7 +29,7 @@ export default function BookshelfContent() {
           <ul className="shelf-books">
             {books.map((book) => {
               const href = book.downloadLink ?? book.buyLink
-              const action = book.downloadLink ? "Read on Google Drive" : "Buy a copy"
+              const action = book.downloadLink ? readLabel(book.downloadLink) : "Buy a copy"
               const cover = (
                 <span className="book relative h-44 w-[8.25rem] sm:h-52 sm:w-[9.75rem]">
                   <Image
