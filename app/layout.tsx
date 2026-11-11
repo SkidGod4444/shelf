@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Besley, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 const sans = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -105,6 +106,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Analytics />
       </body>
     </html>
   );
